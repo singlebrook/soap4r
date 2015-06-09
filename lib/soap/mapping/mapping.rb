@@ -454,7 +454,8 @@ module Mapping
           schema_element.is_concrete_definition
         definition.elements = schema_element
       else
-        default_ns = schema_name.namespace if schema_name
+        default_ns = schema_ns
+        default_ns ||= schema_name.namespace if schema_name
         default_ns ||= schema_type.namespace if schema_type
         definition.elements = parse_schema_definition(schema_element, default_ns)
         if klass < ::Array
